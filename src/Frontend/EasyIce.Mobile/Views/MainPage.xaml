@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EasyIce.Mobile.ViewModels"
+             x:Class="EasyIce.Mobile.Views.MainPage"
+             Title="Easy-ice">
+
+    <Grid RowDefinitions="Auto, *" Padding="20" RowSpacing="20">
+        
+        <!-- Header & Streak -->
+        <Grid ColumnDefinitions="*, Auto">
+            <Label Text="Привет, Чемпион!" 
+                   FontSize="24" FontAttributes="Bold" 
+                   VerticalOptions="Center" />
+            <StackLayout Grid.Column="1" Orientation="Horizontal" Spacing="5">
+                <Label Text="🔥" FontSize="20"/>
+                <Label Text="{Binding TrainingStreak}" FontSize="20" TextColor="{StaticResource NeonCyan}"/>
+                <Label Text="дней" FontSize="14" VerticalOptions="End" TextColor="{StaticResource TextSecondary}"/>
+            </StackLayout>
+        </Grid>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="20">
+                
+                <!-- Safety Widget -->
+                <Border Style="{StaticResource SafetyWidgetStyle}">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="⚠️ БЕЗОПАСНОСТЬ ПРЕЖДЕ ВСЕГО" 
+                               TextColor="{StaticResource NeonMagenta}" 
+                               FontAttributes="Bold" HorizontalOptions="Center"/>
+                        
+                        <Label Text="{Binding SafetyMessage}" 
+                               HorizontalTextAlignment="Center" 
+                               TextColor="{StaticResource TextPrimary}"/>
+
+                        <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                            <CheckBox IsChecked="{Binding IsSafetyConfirmed}" Color="{StaticResource NeonCyan}"/>
+                            <Label Text="Я в безопасности и готов" VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Quick Categories -->
+                <Label Text="Категории" FontSize="18" FontAttributes="Bold" TextColor="{StaticResource TextSecondary}"/>
+                <FlexLayout Wrap="Wrap" JustifyContent="SpaceBetween">
+                    <Button Text="Лед" Style="{StaticResource NeonButtonStyle}" WidthRequest="100" Margin="0,0,0,10"/>
+                    <Button Text="ОФП" Style="{StaticResource NeonButtonStyle}" WidthRequest="100" Margin="0,0,0,10"/>
+                    <Button Text="Растяжка" Style="{StaticResource NeonButtonStyle}" WidthRequest="100" Margin="0,0,0,10"/>
+                </FlexLayout>
+
+                <!-- Programs List -->
+                <Label Text="Продолжить тренировку" FontSize="18" FontAttributes="Bold" TextColor="{StaticResource TextSecondary}"/>
+                
+                <CollectionView ItemsSource="{Binding Programs}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Style="{StaticResource GlassCardStyle}" Margin="0,5">
+                                <Grid ColumnDefinitions="*, Auto">
+                                    <VerticalStackLayout Spacing="5">
+                                        <Label Text="{Binding Title}" FontSize="16" FontAttributes="Bold"/>
+                                        <Label Text="{Binding Category}" FontSize="12" TextColor="{StaticResource NeonCyan}"/>
+                                    </VerticalStackLayout>
+                                    
+                                    <Button Grid.Column="1" 
+                                            Text="{Binding IsUnlocked, Converter={StaticResource BoolToTextConverter}, ConverterParameter='Play|Locked'}"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainViewModel}}, Path=OpenProgramCommand}"
+                                            CommandParameter="{Binding .}"
+                                            Style="{StaticResource NeonButtonStyle}"
+                                            IsEnabled="{Binding IsUnlocked}"
+                                            WidthRequest="80" HeightRequest="40"/>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>

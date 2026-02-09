@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  easyice-db:
+    image: postgres:15-alpine
+    container_name: easyice-postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: easyice_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: always
+
+  easyice-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: easyice-backend
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=easyice-db;Port=5432;Database=easyice_db;Username=admin;Password=password
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "5000:8080" # Mapping container port 8080 (default for .NET 8+) to host 5000
+    depends_on:
+      - easyice-db
+    restart: always
+
+volumes:
+  postgres_data:
