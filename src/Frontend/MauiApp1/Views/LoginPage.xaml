@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MauiApp1.ViewModels"
+             x:Class="MauiApp1.Views.LoginPage"
+             Title="Вход"
+             Shell.NavBarIsVisible="False">
+
+    <Grid BackgroundColor="{StaticResource DeepIceBackground}" Padding="30">
+        <VerticalStackLayout VerticalOptions="Center" Spacing="20">
+            
+            <Label Text="Easy-ice" 
+                   FontSize="40" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center"
+                   TextColor="{StaticResource NeonCyan}"/>
+            
+            <Label Text="Твой тренер на льду" 
+                   FontSize="16" 
+                   HorizontalOptions="Center"
+                   TextColor="{StaticResource TextSecondary}"/>
+
+            <BoxView HeightRequest="40" Color="Transparent"/>
+
+            <Entry Placeholder="Email" 
+                   Text="{Binding Email}"
+                   TextColor="White"
+                   PlaceholderColor="{StaticResource TextSecondary}"
+                   BackgroundColor="{StaticResource GlassSurface}"/>
+            
+            <Entry Placeholder="Пароль" 
+                   IsPassword="True"
+                   Text="{Binding Password}"
+                   TextColor="White"
+                   PlaceholderColor="{StaticResource TextSecondary}"
+                   BackgroundColor="{StaticResource GlassSurface}"/>
+
+            <Button Text="ВОЙТИ" 
+                    Command="{Binding LoginCommand}"
+                    Style="{StaticResource NeonButtonStyle}"
+                    BackgroundColor="{StaticResource NeonCyan}"
+                    TextColor="Black"
+                    Margin="0,20,0,0"/>
+
+            <Button Text="Регистрация" 
+                    BackgroundColor="Transparent"
+                    TextColor="{StaticResource TextSecondary}"/>
+
+        </VerticalStackLayout>
+    </Grid>
+
+</ContentPage>

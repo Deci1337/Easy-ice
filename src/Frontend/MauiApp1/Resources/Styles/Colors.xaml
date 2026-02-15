@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <Color x:Key="DeepIceBackground">#050814</Color>
+    <Color x:Key="GlassSurface">#CC1A2238</Color>
+    <Color x:Key="NeonCyan">#00F0FF</Color>
+    <Color x:Key="NeonMagenta">#FF0099</Color>
+    <Color x:Key="NeonGreen">#00FF9D</Color>
+    <Color x:Key="TextPrimary">#FFFFFF</Color>
+    <Color x:Key="TextSecondary">#AABBC3</Color>
+    <Color x:Key="Transparent">Transparent</Color>
+
+    <LinearGradientBrush x:Key="CyanGradient" EndPoint="1,0">
+        <GradientStop Color="#00F0FF" Offset="0.1" />
+        <GradientStop Color="Transparent" Offset="1.0" />
+    </LinearGradientBrush>
+
+    <SolidColorBrush x:Key="DeepIceBrush" Color="{StaticResource DeepIceBackground}"/>
+    <SolidColorBrush x:Key="GlassBrush" Color="{StaticResource GlassSurface}"/>
+    <SolidColorBrush x:Key="NeonCyanBrush" Color="{StaticResource NeonCyan}"/>
+    <SolidColorBrush x:Key="NeonMagentaBrush" Color="{StaticResource NeonMagenta}"/>
+    <SolidColorBrush x:Key="TextPrimaryBrush" Color="{StaticResource TextPrimary}"/>
+
+</ResourceDictionary>

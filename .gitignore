@@ -10,6 +10,7 @@
 *.sln.docstates
 
 # Visual Studio files
+.vs/
 .azure/
 .vscode/
 

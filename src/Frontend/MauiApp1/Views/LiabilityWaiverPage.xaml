@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Views.LiabilityWaiverPage"
+             Title="Важно"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="*, Auto" Padding="20" BackgroundColor="{StaticResource DeepIceBackground}">
+        <ScrollView>
+            <VerticalStackLayout Spacing="15">
+                <Label Text="⚠️ Соглашение об ответственности" 
+                       FontSize="22" FontAttributes="Bold" TextColor="{StaticResource NeonMagenta}"/>
+                
+                <Label Text="Пожалуйста, внимательно прочитайте перед использованием приложения." 
+                       TextColor="White"/>
+
+                <Label Text="1. Риск травм" FontAttributes="Bold" TextColor="{StaticResource NeonCyan}"/>
+                <Label Text="Катание на коньках является травмоопасным видом спорта. Вы принимаете на себя все риски, связанные с выполнением упражнений." 
+                       TextColor="{StaticResource TextSecondary}"/>
+
+                <Label Text="2. Медицинские показания" FontAttributes="Bold" TextColor="{StaticResource NeonCyan}"/>
+                <Label Text="Убедитесь, что у вас нет медицинских противопоказаний к физическим нагрузкам." 
+                       TextColor="{StaticResource TextSecondary}"/>
+
+                <Label Text="3. Отказ от претензий" FontAttributes="Bold" TextColor="{StaticResource NeonCyan}"/>
+                <Label Text="Разработчики приложения Easy-ice не несут ответственности за травмы, полученные в ходе тренировок." 
+                       TextColor="{StaticResource TextSecondary}"/>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <Button Grid.Row="1" 
+                Text="Я ПРИНИМАЮ УСЛОВИЯ" 
+                Clicked="OnAcceptClicked"
+                Style="{StaticResource NeonButtonStyle}"
+                Margin="0,20,0,0"/>
+    </Grid>
+
+</ContentPage>
