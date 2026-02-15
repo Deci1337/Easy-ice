@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="EasyIce.Mobile.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:EasyIce.Mobile"
+    xmlns:views="clr-namespace:EasyIce.Mobile.Views"
+    Shell.FlyoutBehavior="Disabled"
+    BackgroundColor="{StaticResource DeepIceBackground}" 
+    TabBarBackgroundColor="{StaticResource GlassSurface}"
+    TabBarTitleColor="{StaticResource TextSecondary}"
+    TabBarUnselectedColor="{StaticResource TextSecondary}">
+
+    <TabBar>
+        <ShellContent
+            Title="Главная"
+            ContentTemplate="{DataTemplate views:MainPage}"
+            Route="MainPage" />
+            <!-- Icon="icon_home.png" -->
+
+        <ShellContent
+            Title="Программы"
+            ContentTemplate="{DataTemplate views:MainPage}" 
+            Route="CatalogPage" /> 
+            <!-- Using MainPage placeholder for now, would be CatalogPage -->
+
+        <ShellContent
+            Title="Профиль"
+            ContentTemplate="{DataTemplate views:MainPage}"
+            Route="ProfilePage" />
+            <!-- Using MainPage placeholder for now -->
+    </TabBar>
+
+</Shell>
